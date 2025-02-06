@@ -47,7 +47,20 @@ from customers as c
 left join orders as o on c.id = o.cust_id
 order by c.first_name,o.order_details 
 
-11. 
+11. select c.first_name,o.order_date,o.order_details,o.total_order_cost
+from customers as c
+join orders as o on c.id = o.cust_id
+where c.first_name in ( 'Jill' , 'Eva')
+order by o.cust_id 
+
+12. With dept_avg as (
+     select department, avg(salary) as avg_salary
+     from employee 
+     group by department
+     )
+     select e.first_name,e.department,e.salary,d.avg_salary
+     from employee e
+     join dept_avg d on d.department = e.department
 
 
 
