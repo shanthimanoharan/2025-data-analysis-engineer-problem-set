@@ -63,6 +63,69 @@ order by o.cust_id
      join dept_avg d on d.department = e.department
 
 
+13. select Distinct home_library_code
+from library_usage
+where circulation_active_year = 2016 and provided_email_address = 'FALSE' and notice_preference_definition = 'email'
+
+14. select employeename ,basepay  from sf_public_salaries
+where jobtitle like 'CAPTAIN%'
+
+15. select artist, count(*) as no_occurances from spotify_worldwide_daily_song_ranking
+group by artist
+order by no_occurances desc
+
+16. select * from lyft_drivers
+where yearly_salary <= 30000 or yearly_salary > 70000
+
+17. select e.location , avg(cast (h.popularity as float)) from facebook_employees as e
+join facebook_hack_survey as h
+on e.id = h.employee_id
+group by e.location 
+
+18. select distinct p.* from facebook_posts as p
+join facebook_reactions as r
+on p.post_id = r.post_id
+where r.reaction = 'heart'
+
+19. select count(movie) from oscar_nominees
+where nominee = 'Abigail Breslin'
+
+20. select hotel_name, reviewer_score, count(*) as counts from hotel_reviews
+where hotel_name = 'Hotel Arena'
+group by  hotel_name, reviewer_score
+
+21. select distinct bike_number,MAX(end_time) as last_used from dc_bikeshare_q1_2012
+group by bike_number
+
+22. select id,first_name,last_name,department_id,max( salary) as current_salary 
+from ms_employee_salary
+group by  id,first_name,last_name,department_id
+
+23. SELECT ABS(
+    (SELECT MAX(emp.salary) FROM db_employee emp
+     JOIN db_dept dept
+     ON emp.department_id = dept.id
+     WHERE dept.department = 'marketing') - 
+    (SELECT MAX(emp.salary) FROM db_employee emp
+     JOIN db_dept dept 
+     ON emp.department_id = dept.id
+     WHERE dept.department = 'engineering')
+) AS salary_difference;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
